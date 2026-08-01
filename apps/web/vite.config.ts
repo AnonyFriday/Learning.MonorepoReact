@@ -20,6 +20,10 @@ export default defineConfig({
         replacement: resolve(__dirname, "../../packages/ui/src/typography/heading/heading.tsx")
       },
       {
+        find: "@react-workshop/ui/image",
+        replacement: resolve(__dirname, "../../packages/ui/src/image/image.tsx")
+      },
+      {
         find: "@react-workshop/ui/text",
         replacement: resolve(__dirname, "../../packages/ui/src/typography/text/text.tsx")
       },

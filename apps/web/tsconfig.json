@@ -6,6 +6,7 @@
       "@react-workshop/http-client": ["../../packages/http-client/src/index.ts"],
       "@react-workshop/ui/button": ["../../packages/ui/src/button/button.tsx"],
       "@react-workshop/ui/heading": ["../../packages/ui/src/typography/heading/heading.tsx"],
+      "@react-workshop/ui/image": ["../../packages/ui/src/image/image.tsx"],
       "@react-workshop/ui/text": ["../../packages/ui/src/typography/text/text.tsx"],
       "@react-workshop/ui/card": ["../../packages/ui/src/card/card.tsx"],
       "@react-workshop/ui/input": ["../../packages/ui/src/input/input.tsx"],
