@@ -1,19 +1,27 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "../../utils";
 
-export type TextVariant = "body" | "leading" | "muted" | "eyebrow" | "badge" | "strikethrough";
+export type TextVariant =
+  | "body"
+  | "leading"
+  | "muted"
+  | "eyebrow"
+  | "badge"
+  | "strikethrough"
+  | "link";
 
 export type TextSize = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 
 export type TextWeight = "normal" | "medium" | "semibold" | "bold" | "extrabold";
 
-export type TextAsComponent = "p" | "span";
+export type TextAsComponent = "p" | "span" | "a";
 
 export type TextProps = HTMLAttributes<HTMLElement> & {
   asComponent?: TextAsComponent;
   size?: TextSize;
   variant?: TextVariant;
   weight?: TextWeight;
+  href?: string;
 };
 
 const variants: Record<TextVariant, string> = {
@@ -22,7 +30,8 @@ const variants: Record<TextVariant, string> = {
   leading: "md:text-lg text-dark leading-relaxed",
   eyebrow: "md:text-sm tracking-[3px] uppercase text-brand",
   badge: "md:text-xl text-muted",
-  strikethrough: "text-muted line-through"
+  strikethrough: "text-muted line-through",
+  link: "text-dark hover:text-brand transition-colors cursor-pointer"
 };
 
 const sizes: Record<TextSize, string> = {

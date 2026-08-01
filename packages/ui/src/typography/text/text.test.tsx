@@ -85,4 +85,17 @@ describe("Text Component", () => {
     expect(el.tagName).toBe("SPAN");
     expect(el).toHaveClass("text-sm", "font-normal", "text-muted", "line-through");
   });
+
+  it("renders link variant styling", () => {
+    render(
+      <Text asComponent="a" href="index.html" variant="link">
+        Home
+      </Text>
+    );
+
+    const el = screen.getByRole("link", { name: "Home" });
+    expect(el.tagName).toBe("A");
+    expect(el).toHaveAttribute("href", "index.html");
+    expect(el).toHaveClass("text-dark", "hover:text-brand", "cursor-pointer");
+  });
 });

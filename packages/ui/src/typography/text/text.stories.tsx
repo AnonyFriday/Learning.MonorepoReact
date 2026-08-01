@@ -114,6 +114,15 @@ export const CustomSizes: Story = {
   )
 };
 
+export const LinkVariant: Story = {
+  args: {
+    asComponent: "a",
+    variant: "link",
+    href: "index.html",
+    children: "Inline link text"
+  }
+};
+
 export const AllVariants: Story = {
   render: () => (
     <div className="grid max-w-xl gap-4">
@@ -133,6 +142,9 @@ export const AllVariants: Story = {
       </Text>
       <Text asComponent="span" variant="strikethrough" size="sm">
         Strikethrough: Rp 3.500.000
+      </Text>
+      <Text asComponent="a" href="index.html" variant="link">
+        Link: Read privacy policy
       </Text>
       <Text size="xl" weight="bold">
         Rp 3.500.000
