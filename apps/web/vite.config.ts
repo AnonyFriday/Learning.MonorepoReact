@@ -16,6 +16,10 @@ export default defineConfig({
         replacement: resolve(__dirname, "../../packages/ui/src/button/button.tsx")
       },
       {
+        find: "@react-workshop/ui/text",
+        replacement: resolve(__dirname, "../../packages/ui/src/typography/text/text.tsx")
+      },
+      {
         find: "@react-workshop/ui/card",
         replacement: resolve(__dirname, "../../packages/ui/src/card/card.tsx")
       },
