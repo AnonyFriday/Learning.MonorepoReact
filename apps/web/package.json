@@ -16,6 +16,7 @@
     "@react-workshop/ui": "workspace:*",
     "@tanstack/react-query": "catalog:",
     "axios": "catalog:",
+    "lucide-react": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-hook-form": "catalog:",
