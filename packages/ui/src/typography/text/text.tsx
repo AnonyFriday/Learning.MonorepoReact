@@ -14,7 +14,7 @@ export type TextSize = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl
 
 export type TextWeight = "normal" | "medium" | "semibold" | "bold" | "extrabold";
 
-export type TextAsComponent = "p" | "span" | "a";
+export type TextAsComponent = "p" | "span";
 
 export type TextProps = HTMLAttributes<HTMLElement> & {
   asComponent?: TextAsComponent;
