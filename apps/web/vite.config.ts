@@ -8,6 +8,14 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        find: "@react-workshop/ui/utils",
+        replacement: resolve(__dirname, "../../packages/ui/src/utils.ts")
+      },
+      {
+        find: "@react-workshop/ui/header",
+        replacement: resolve(__dirname, "../../packages/ui/src/header/header.tsx")
+      },
+      {
         find: "@react-workshop/ui/styles.css",
         replacement: resolve(__dirname, "../../packages/ui/src/styles.css")
       },
