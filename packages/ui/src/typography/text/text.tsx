@@ -27,11 +27,11 @@ export type TextProps = HTMLAttributes<HTMLElement> & {
 const variants: Record<TextVariant, string> = {
   body: "text-dark leading-relaxed",
   muted: "text-muted",
-  leading: "md:text-lg text-dark leading-relaxed",
-  eyebrow: "md:text-sm tracking-[3px] uppercase text-brand",
-  badge: "md:text-xl text-muted",
+  leading: "text-dark leading-relaxed md:text-lg",
+  eyebrow: "uppercase tracking-[3px] text-brand md:text-sm",
+  badge: "text-muted md:text-xl",
   strikethrough: "text-muted line-through",
-  link: "text-dark hover:text-brand transition-colors cursor-pointer"
+  link: "cursor-pointer text-dark transition-colors hover:text-brand"
 };
 
 const sizes: Record<TextSize, string> = {

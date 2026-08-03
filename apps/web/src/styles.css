@@ -1,9 +1,11 @@
 @import "@react-workshop/ui/styles.css";
 
 body {
-  margin: 0;
-  min-width: 320px;
-  background: #ffffff;
-  color: #3a3a3a;
+  @apply m-0 min-w-xs bg-white text-dark;
   font-family: var(--font-sans);
+}
+
+main {
+  @apply mx-auto grid min-h-screen w-full max-w-5xl gap-6 px-4 py-8;
+  @apply md:grid-cols-[1fr_1.2fr] md:px-6;
 }

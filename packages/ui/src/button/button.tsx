@@ -12,14 +12,13 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "border border-[#b88e2f] bg-[#b88e2f] text-white shadow-[0_12px_24px_rgba(184,142,47,0.22)] hover:border-[#a17920] hover:bg-[#a17920] focus-visible:ring-[#b88e2f]",
-  secondary:
-    "border border-[#b88e2f] bg-white text-[#b88e2f] hover:bg-[#fbf7ef] focus-visible:ring-[#b88e2f]",
+    "border border-brand bg-brand text-white shadow-[0_12px_24px_rgba(184,142,47,0.22)] hover:opacity-90 focus-visible:ring-brand",
+  secondary: "border border-brand bg-white text-brand hover:bg-beige focus-visible:ring-brand",
   ghost:
-    "border border-transparent bg-transparent text-[#3a3a3a] hover:bg-[#f4efe6] hover:text-[#b88e2f] focus-visible:ring-[#b88e2f]",
-  danger: "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500",
+    "border border-transparent bg-transparent text-dark hover:bg-beige hover:text-brand focus-visible:ring-brand",
+  danger: "bg-danger text-white hover:opacity-90 focus-visible:ring-danger",
   outline:
-    "rounded-[15px] border border-black bg-white text-black shadow-none hover:bg-[#f8f8f8] focus-visible:ring-black"
+    "rounded-[15px] border border-dark bg-white text-dark shadow-none hover:bg-beige focus-visible:ring-dark"
 };
 
 const sizes: Record<ButtonSize, string> = {
