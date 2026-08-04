@@ -16,6 +16,10 @@ export default defineConfig({
         replacement: resolve(__dirname, "../../packages/ui/src/header/header.tsx")
       },
       {
+        find: "@react-workshop/ui/footer",
+        replacement: resolve(__dirname, "../../packages/ui/src/footer/footer.tsx")
+      },
+      {
         find: "@react-workshop/ui/styles.css",
         replacement: resolve(__dirname, "../../packages/ui/src/styles.css")
       },

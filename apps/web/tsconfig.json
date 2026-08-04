@@ -9,6 +9,7 @@
       "@react-workshop/ui/text": ["../../packages/ui/src/typography/text/text.tsx"],
       "@react-workshop/ui/card": ["../../packages/ui/src/card/card.tsx"],
       "@react-workshop/ui/header": ["../../packages/ui/src/header/header.tsx"],
+      "@react-workshop/ui/footer": ["../../packages/ui/src/footer/footer.tsx"],
       "@react-workshop/ui/input": ["../../packages/ui/src/input/input.tsx"],
       "@react-workshop/ui/styles.css": ["../../packages/ui/src/styles.css"]
     }
