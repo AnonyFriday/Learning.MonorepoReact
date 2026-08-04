@@ -6,6 +6,5 @@ body {
 }
 
 main {
-  @apply mx-auto grid min-h-screen w-full max-w-5xl gap-6 px-4 py-8;
-  @apply md:grid-cols-[1fr_1.2fr] md:px-6;
+  @apply mx-auto min-h-screen w-full gap-6 pb-8 flex-1;
 }

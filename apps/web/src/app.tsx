@@ -1,241 +1,39 @@
-// import { HttpError } from "@react-workshop/http-client";
-// import { Button } from "@react-workshop/ui/button";
-// import { Card, CardDescription, CardHeader, CardTitle } from "@react-workshop/ui/card";
-// import { Field, FieldError, Input, Label } from "@react-workshop/ui/input";
-import { Input } from "@react-workshop/ui/input";
-// import { useMutation, useQuery } from "@tanstack/react-query";
-// import { useForm } from "react-hook-form";
-// import { getTodos } from "./api";
-import { Header } from "@react-workshop/ui/header";
-import { Footer } from "@react-workshop/ui/footer";
-import {
-  Heart as IHeart,
-  Search as ISearch,
-  ShoppingCart as IShoppingCart,
-  User as IUser
-} from "lucide-react";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { DefaultLayout } from "@/layouts/default-layout";
+import { ProtectedLayout } from "@/layouts/protected-layout";
+import { AboutPage } from "@/pages/about-page";
+import { CartPage } from "@/pages/cart-page";
+import { CheckoutPage } from "@/pages/checkout-page";
+import { ContactPage } from "@/pages/contact-page";
+import { HomePage } from "@/pages/home-page";
+import { SingleProductPage } from "@/pages/single-product-page";
+import { ShopPage } from "@/pages/shop-page";
+import { BlogPage } from "@/pages/blog-page";
+import { ProductComparisonPage } from "@/pages/product-comparison-page";
+import { NotFoundPage } from "@/pages/not-found-page";
+import { ROUTES } from "@/routes";
 
-// type ContactFormValues = {
-//   name: string;
-//   email: string;
-// };
+const router = createBrowserRouter([
+  {
+    element: <DefaultLayout />,
+    children: [
+      { path: ROUTES.home, element: <HomePage /> },
+      { path: ROUTES.shop, element: <ShopPage /> },
+      { path: "/shop/:id", element: <SingleProductPage /> },
+      { path: ROUTES.compare, element: <ProductComparisonPage /> },
+      { path: ROUTES.cart, element: <CartPage /> },
+      { path: ROUTES.contact, element: <ContactPage /> },
+      { path: ROUTES.about, element: <AboutPage /> },
+      { path: ROUTES.blog, element: <BlogPage /> },
+      {
+        element: <ProtectedLayout />,
+        children: [{ path: ROUTES.checkout, element: <CheckoutPage /> }]
+      },
+      { path: "*", element: <NotFoundPage /> }
+    ]
+  }
+]);
 
 export function App() {
-  // const todosQuery = useQuery({
-  //   queryKey: ["todos"],
-  //   queryFn: getTodos
-  // });
-
-  // const form = useForm<ContactFormValues>({
-  //   defaultValues: {
-  //     name: "",
-  //     email: ""
-  //   }
-  // });
-
-  // const contactMutation = useMutation({
-  //   mutationFn: async (values: ContactFormValues) => {
-  //     await new Promise((resolve) => window.setTimeout(resolve, 600));
-  //     return values;
-  //   }
-  // });
-
-  return (
-    <div className="bg-white text-black">
-      <Header>
-        <Header.Nav className="mx-auto">
-          <Header.Logo>
-            <img
-              className="h-9 w-9 object-contain"
-              src="/images/common/common-01.png"
-              alt="Furniro"
-            />
-            Furniro
-          </Header.Logo>
-          <Header.NavList>
-            <Header.NavItem>Home</Header.NavItem>
-            <Header.NavItem>Shop</Header.NavItem>
-            <Header.NavItem>About</Header.NavItem>
-            <Header.NavItem>Contact</Header.NavItem>
-          </Header.NavList>
-          <Header.Actions>
-            <Header.ActionButton aria-label="Account">
-              <IUser size={24} />
-            </Header.ActionButton>
-            <Header.ActionButton aria-label="Search">
-              <ISearch size={24} />
-            </Header.ActionButton>
-            <Header.ActionButton aria-label="Wishlist">
-              <IHeart size={24} />
-            </Header.ActionButton>
-            <Header.ActionButton aria-label="Cart">
-              <IShoppingCart size={24} />
-            </Header.ActionButton>
-          </Header.Actions>
-        </Header.Nav>
-      </Header>
-      <main>
-        {/* <section className="grid content-start gap-6">
-          <div className="grid gap-2">
-            <p className="text-sm font-medium uppercase tracking-wide text-zinc-500">
-              React Workshop
-            </p>
-            <h1 className="text-3xl font-semibold text-zinc-950">Vite monorepo starter</h1>
-            <p className="max-w-xl text-base leading-7 text-zinc-600">
-              React 19, TanStack Query, React Hook Form, Axios, Tailwind, Storybook, and shared
-              workspace packages.
-            </p>
-          </div>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Axios query</CardTitle>
-              <CardDescription>Loaded through @react-workshop/http-client.</CardDescription>
-            </CardHeader>
-            <QueryState
-              error={todosQuery.error}
-              isError={todosQuery.isError}
-              isLoading={todosQuery.isLoading}
-            />
-            {todosQuery.data ? (
-              <ul className="grid gap-3">
-                {todosQuery.data.map((todo) => (
-                  <li
-                    className="rounded-md border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm text-zinc-700"
-                    key={todo.id}
-                  >
-                    {todo.title}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </Card>
-        </section>
-
-        <Card className="self-start">
-          <CardHeader>
-            <CardTitle>React Hook Form</CardTitle>
-            <CardDescription>
-              Form fields are shared UI components from the monorepo.
-            </CardDescription>
-          </CardHeader>
-
-          <form
-            className="grid gap-4"
-            onSubmit={form.handleSubmit((values) => contactMutation.mutate(values))}
-          >
-            <Field>
-              <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                isInvalid={Boolean(form.formState.errors.name)}
-                placeholder="Ada Lovelace"
-                {...form.register("name", {
-                  required: "Name is required",
-                  minLength: {
-                    value: 2,
-                    message: "Name must be at least 2 characters"
-                  }
-                })}
-              />
-              <FieldError>{form.formState.errors.name?.message}</FieldError>
-            </Field>
-
-            <Field>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                isInvalid={Boolean(form.formState.errors.email)}
-                placeholder="ada@example.com"
-                type="email"
-                {...form.register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^\S+@\S+\.\S+$/,
-                    message: "Enter a valid email address"
-                  }
-                })}
-              />
-              <FieldError>{form.formState.errors.email?.message}</FieldError>
-            </Field>
-
-            <Button
-              className="mt-2 justify-self-start"
-              isLoading={contactMutation.isPending}
-              type="submit"
-            >
-              Submit
-            </Button>
-
-            {contactMutation.data ? (
-              <p className="rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
-                Submitted for {contactMutation.data.name}.
-              </p>
-            ) : null}
-          </form>
-        </Card> */}
-      </main>
-
-      <Footer>
-        <Footer.Grid className="mx-auto">
-          <Footer.Column>
-            <Footer.Logo className="mb-12">Furniro.</Footer.Logo>
-            <Footer.Address>
-              400 University Drive Suite 200 Coral Gables, FL 33134 USA
-            </Footer.Address>
-          </Footer.Column>
-          <Footer.Column>
-            <Footer.Heading className="mb-10">Links</Footer.Heading>
-            <Footer.LinkList>
-              <Footer.Link href="#">Home</Footer.Link>
-              <Footer.Link href="#">Shop</Footer.Link>
-              <Footer.Link href="#">About</Footer.Link>
-              <Footer.Link href="#">Contact</Footer.Link>
-            </Footer.LinkList>
-          </Footer.Column>
-          <Footer.Column>
-            <Footer.Heading className="mb-10">Help</Footer.Heading>
-            <Footer.LinkList>
-              <Footer.Link href="#">Payment Options</Footer.Link>
-              <Footer.Link href="#">Returns</Footer.Link>
-              <Footer.Link href="#">Privacy Policies</Footer.Link>
-            </Footer.LinkList>
-          </Footer.Column>
-          <Footer.Column>
-            <Footer.Heading className="mb-10">Newsletter</Footer.Heading>
-            <Footer.NewsletterForm>
-              <Input variant="textUnderline" placeholder="Enter Your Email Address" />
-              <Footer.SubscribeButton>Subscribe</Footer.SubscribeButton>
-            </Footer.NewsletterForm>
-          </Footer.Column>
-        </Footer.Grid>
-        <Footer.Bottom>2026 Furniro. All rights reserved</Footer.Bottom>
-      </Footer>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
-
-// function QueryState({
-//   error,
-//   isError,
-//   isLoading
-// }: {
-//   error: Error | null;
-//   isError: boolean;
-//   isLoading: boolean;
-// }) {
-//   if (isLoading) {
-//     return <p className="mb-4 text-sm text-zinc-600">Loading todos...</p>;
-//   }
-
-//   if (isError) {
-//     const message =
-//       error instanceof HttpError && error.status
-//         ? `Request failed with status ${error.status}.`
-//         : "Unable to load todos.";
-
-//     return <p className="mb-4 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{message}</p>;
-//   }
-
-//   return null;
-// }
