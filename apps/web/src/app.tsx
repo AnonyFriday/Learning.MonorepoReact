@@ -43,7 +43,7 @@ export function App() {
   return (
     <div className="bg-white text-black">
       <Header>
-        <Header.Nav>
+        <Header.Nav className="mx-auto">
           <Header.Logo>
             <img
               className="h-9 w-9 object-contain"
@@ -177,10 +177,10 @@ export function App() {
       </main>
 
       <Footer>
-        <Footer.Grid>
+        <Footer.Grid className="mx-auto">
           <Footer.Column>
             <Footer.Logo className="mb-12">Furniro.</Footer.Logo>
-            <Footer.Address className="max-w-[285px]">
+            <Footer.Address>
               400 University Drive Suite 200 Coral Gables, FL 33134 USA
             </Footer.Address>
           </Footer.Column>

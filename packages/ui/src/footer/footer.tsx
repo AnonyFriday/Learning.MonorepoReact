@@ -21,7 +21,7 @@ function Grid({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn(
-        "mx-auto grid w-[min(1240px,calc(100%-32px))] gap-10 pb-12",
+        "w-[min(1240px,calc(100%-32px))] grid gap-10 pb-12",
         "lg:grid-cols-[2fr_1fr_1fr_2fr]",
         className
       )}
@@ -48,7 +48,7 @@ function Logo({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
 }
 
 function Address({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
-  return <Text variant="muted" className={cn(className)} {...props} />;
+  return <Text variant="muted" className={cn("max-w-71.25", className)} {...props} />;
 }
 
 function ColumnHeading({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {

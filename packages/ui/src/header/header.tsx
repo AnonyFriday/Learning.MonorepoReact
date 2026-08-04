@@ -14,7 +14,7 @@ function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
   return (
     <nav
       className={cn(
-        "mx-auto min-h-25 w-[min(1240px,calc(100%-32px))] flex items-center justify-between gap-6",
+        "min-h-25 w-[min(1240px,calc(100%-32px))] flex items-center justify-between gap-6",
         className
       )}
       {...props}
