@@ -2,8 +2,9 @@ import type { AnchorHTMLAttributes, ElementType, HTMLAttributes } from "react";
 import { cn } from "../utils";
 import { Button, type ButtonProps } from "../button/button";
 
-type HeaderNavItem = AnchorHTMLAttributes<HTMLAnchorElement> & {
+type HeaderNavItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   asComponent?: ElementType;
+  to?: string;
 };
 
 export function Header({ className, ...props }: HTMLAttributes<HTMLElement>) {
@@ -44,7 +45,7 @@ function NavList({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function NavItem({ className, asComponent: Component = "a", ...props }: HeaderNavItem) {
+function NavItem({ className, asComponent: Component = "a", ...props }: HeaderNavItemProps) {
   return (
     <Component
       className={cn(

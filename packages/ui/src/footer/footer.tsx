@@ -11,6 +11,7 @@ import { Text } from "../typography/text/text";
 
 type FooterLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   asComponent?: ElementType;
+  to?: string;
 };
 
 export function Footer({ className, ...props }: HTMLAttributes<HTMLElement>) {
