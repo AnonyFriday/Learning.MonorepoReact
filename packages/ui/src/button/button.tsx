@@ -40,7 +40,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "flex items-center justify-center gap-2 rounded-none font-semibold tracking-[0.01em]",
+        "flex items-center justify-center gap-2 rounded-none font-semibold tracking-[0.01em] cursor-pointer",
         "transition-all duration-200",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
         "disabled:pointer-events-none disabled:opacity-60",
