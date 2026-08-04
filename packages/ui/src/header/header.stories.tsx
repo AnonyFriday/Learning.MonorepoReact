@@ -25,11 +25,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Normal: Story = {
+export const Default: Story = {
   render: () => (
     <Header>
       <Header.Nav>
-        <Header.Logo>
+        <Header.Logo href="index.html">
           <img
             className="h-9 w-9 object-contain"
             src="/images/common/common-01.png"
@@ -38,10 +38,12 @@ export const Normal: Story = {
           Furniro
         </Header.Logo>
         <Header.NavList>
-          <Header.NavItem>Home</Header.NavItem>
-          <Header.NavItem>Shop</Header.NavItem>
-          <Header.NavItem>About</Header.NavItem>
-          <Header.NavItem>Contact</Header.NavItem>
+          <Header.NavItem className="active" href="index.html">
+            Home
+          </Header.NavItem>
+          <Header.NavItem href="shop.html">Shop</Header.NavItem>
+          <Header.NavItem href="about.html">About</Header.NavItem>
+          <Header.NavItem href="contact.html">Contact</Header.NavItem>
         </Header.NavList>
         <Header.Actions>
           <Header.ActionButton aria-label="Account">

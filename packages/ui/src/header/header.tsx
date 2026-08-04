@@ -1,6 +1,10 @@
-import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ElementType, HTMLAttributes } from "react";
 import { cn } from "../utils";
 import { Button, type ButtonProps } from "../button/button";
+
+type HeaderNavItem = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  asComponent?: ElementType;
+};
 
 export function Header({ className, ...props }: HTMLAttributes<HTMLElement>) {
   return <header className={cn("bg-white", className)} {...props} />;
@@ -40,9 +44,9 @@ function NavList({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function NavItem({ className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+function NavItem({ className, asComponent: Component = "a", ...props }: HeaderNavItem) {
   return (
-    <a
+    <Component
       className={cn(
         "text-black no-underline",
         "transition-colors duration-200 hover:text-brand [&.active]:text-brand",
