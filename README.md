@@ -129,12 +129,12 @@ pnpm dev
 
 ### Functional
 
-- Home page
+- [✅] Home page
 - Product detail page
-- Shop page
+- [✅] Shop page
 - Cart page
-- Contact page
-- About page
+- [✅] Contact page
+- [✅] About page
 - Checkout page
 
 ### UI
