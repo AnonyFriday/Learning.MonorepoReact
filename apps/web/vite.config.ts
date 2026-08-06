@@ -52,6 +52,10 @@ export default defineConfig({
         replacement: resolve(__dirname, "../../packages/ui/src/input/input.tsx")
       },
       {
+        find: "@react-workshop/ui/toast",
+        replacement: resolve(__dirname, "../../packages/ui/src/toast/toast.tsx")
+      },
+      {
         find: "@react-workshop/http-client",
         replacement: resolve(__dirname, "../../packages/http-client/src/index.ts")
       }

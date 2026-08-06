@@ -1,18 +1,24 @@
+import { SectionPageHero, SectionPageHeroProps } from "@/components/sections/section-page-hero";
+import { SectionFeaturePerks } from "@/components/sections/section-feature-perks";
+import { SectionContactForm } from "@/features/contact/components/section-contact-form";
+import { AppCts } from "@/appcts";
+
+const sectionPageHeroProps: SectionPageHeroProps = {
+  currentPageTitle: "Contact",
+  fromPageTitle: "Contact",
+  fromPageUrl: AppCts.Routes.Home,
+  logoUrl: "images/common/common-01.png",
+  bgImageUrl: "images/home/home-20.png"
+};
+
 export function ContactPage() {
   return (
-    <div>
-      <section className="relative grid min-h-79 place-items-center overflow-hidden">
-        <img
-          className="absolute inset-0 h-full w-full object-cover"
-          src="/images/common/common-10.jpg"
-          alt=""
-        />
-        <div className="absolute inset-0 bg-white/55 backdrop-blur-[1px]"></div>
-        <div className="relative text-center">
-          <h1 className="text-[48px] font-medium text-black">Contact</h1>
-          <p className="mt-2 text-base font-normal text-black">Home &gt; Contact</p>
-        </div>
-      </section>
-    </div>
+    <>
+      <SectionPageHero {...sectionPageHeroProps} />
+    
+
+      <SectionContactForm />
+      <SectionFeaturePerks />
+    </>
   );
 }
