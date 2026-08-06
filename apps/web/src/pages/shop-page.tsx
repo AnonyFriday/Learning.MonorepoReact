@@ -6,14 +6,14 @@ import { Pagination } from "@/components/pagination/pagination";
 import { SectionPageHero, SectionPageHeroProps } from "@/components/sections/section-page-hero";
 import { SectionFeaturePerks } from "@/components/sections/section-feature-perks";
 import { ShopFilterBar } from "@/features/products/components/shop-filter-bar";
-import { ROUTES } from "@/routes";
+import { AppCts } from "@/appcts";
 import { ProductFullResponse, getProductsFull } from "@/features/products/api/get-products-full";
 import { useState } from "react";
 
 const sectionPageHeroProps: SectionPageHeroProps = {
   currentPageTitle: "Shop",
   fromPageTitle: "Shop",
-  fromPageUrl: ROUTES.home,
+  fromPageUrl: AppCts.Routes.Home,
   logoUrl: "images/common/common-01.png",
   bgImageUrl: "images/common/common-10.jpg"
 };

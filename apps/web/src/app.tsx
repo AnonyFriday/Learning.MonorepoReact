@@ -11,23 +11,23 @@ import { ShopPage } from "@/pages/shop-page";
 import { BlogPage } from "@/pages/blog-page";
 import { ProductComparisonPage } from "@/pages/product-comparison-page";
 import { NotFoundPage } from "@/pages/not-found-page";
-import { ROUTES } from "@/routes";
+import { AppCts } from "@/appcts";
 
 const router = createBrowserRouter([
   {
     element: <DefaultLayout />,
     children: [
-      { path: ROUTES.home, element: <HomePage /> },
-      { path: ROUTES.shop, element: <ShopPage /> },
+      { path: AppCts.Routes.Home, element: <HomePage /> },
+      { path: AppCts.Routes.Shop, element: <ShopPage /> },
       { path: "/shop/:id", element: <SingleProductPage /> },
-      { path: ROUTES.compare, element: <ProductComparisonPage /> },
-      { path: ROUTES.cart, element: <CartPage /> },
-      { path: ROUTES.contact, element: <ContactPage /> },
-      { path: ROUTES.about, element: <AboutPage /> },
-      { path: ROUTES.blog, element: <BlogPage /> },
+      { path: AppCts.Routes.Compare, element: <ProductComparisonPage /> },
+      { path: AppCts.Routes.Cart, element: <CartPage /> },
+      { path: AppCts.Routes.Contact, element: <ContactPage /> },
+      { path: AppCts.Routes.About, element: <AboutPage /> },
+      { path: AppCts.Routes.Blog, element: <BlogPage /> },
       {
         element: <ProtectedLayout />,
-        children: [{ path: ROUTES.checkout, element: <CheckoutPage /> }]
+        children: [{ path: AppCts.Routes.Checkout, element: <CheckoutPage /> }]
       },
       { path: "*", element: <NotFoundPage /> }
     ]
