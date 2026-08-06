@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "@/components/loading-spinner";
+import { LoadingSpinner } from "@/components/spinner/loading-spinner";
 import { CardProduct } from "@/components/products/card-product/card-product";
 import { getProductsDisplay, ProductResponse } from "@/features/home/api/get-products-display";
 import { Heading } from "@react-workshop/ui/heading";

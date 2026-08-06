@@ -15,7 +15,7 @@ export type ProductResponse = { items: Product[]; total: number | string };
 
 export async function getProductsDisplay() {
   try {
-    return await api.get<ProductResponse>("https://dummyjson.com/c/2d4a-99bb-4ae3-8799");
+    return await api.get<ProductResponse>("/c/dcf2-213f-4173-ab26");
   } catch (error) {
     if (error instanceof HttpError) {
       throw new Error(error.message);
