@@ -2,7 +2,7 @@
   "extends": "@react-workshop/tsconfig/react-library.json",
   "compilerOptions": {
     "rootDir": ".",
-    "types": ["react", "react-dom"]
+    "types": ["react", "react-dom", "vite/client"]
   },
   "include": ["src", ".storybook"],
   "exclude": ["dist", "node_modules", "storybook-static"]
