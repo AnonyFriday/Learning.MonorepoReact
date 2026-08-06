@@ -6,9 +6,9 @@ phases:
       nodejs: '20'
     commands:
       - echo "Installing pnpm..."
-      - pnpm install -g pnpm@11.18.0
+      - npm install -g pnpm@11.18.0
   
-  pre-build:
+  pre_build:
     commands:
       - echo "Installing dependencies..."
       - pnpm install --frozen-lockfile
