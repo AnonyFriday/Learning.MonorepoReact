@@ -4,6 +4,7 @@ import { Footer } from "@react-workshop/ui/footer";
 import { Input } from "@react-workshop/ui/input";
 
 import { AppCts } from "@/appcts";
+import { Toaster } from "@/components/toaster";
 
 import {
   Heart as IHeart,
@@ -59,6 +60,8 @@ export function DefaultLayout() {
       <main className="mx-auto min-h-screen w-full gap-6 pb-8 flex-1">
         <Outlet />
       </main>
+
+      <Toaster />
 
       <Footer>
         <Footer.Grid className="mx-auto">
