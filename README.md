@@ -45,9 +45,17 @@ pnpm dev
   "products": {
     "method": "GET",
     "file": "products.json",
-    "url": "https://dummyjson.com/c/abbb-80dc-4582-8e14",
+    "url": "https://dummyjson.com/c/537f-68c7-475c-8058",
     "expiresOn": null
   },
+
+  "products_16items": {
+    "method": "GET",
+    "file": "products.json",
+    "url": "https://dummyjson.com/c/38dc-0aed-4127-9190",
+    "expiresOn": null
+  },
+
   "productDetails": {
     "method": "GET",
     "file": "product-details.json",
