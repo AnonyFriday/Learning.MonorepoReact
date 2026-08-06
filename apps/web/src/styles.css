@@ -4,7 +4,3 @@ body {
   @apply m-0 min-w-xs bg-white text-dark;
   font-family: var(--font-sans);
 }
-
-main {
-  @apply mx-auto min-h-screen w-full gap-6 pb-8 flex-1;
-}

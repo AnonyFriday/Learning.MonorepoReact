@@ -7,3 +7,4 @@ coverage
 *.local
 .DS_Store
 apps/web/src/styles-debug.css
+*.env
