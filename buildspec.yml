@@ -1,0 +1,36 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: '20'
+    commands:
+      - echo "Installing pnpm..."
+      - pnpm install -g pnpm@11.18.0
+  
+  pre-build:
+    commands:
+      - echo "Installing dependencies..."
+      - pnpm install --frozen-lockfile
+  
+  build:
+    commands:
+      - echo "Building project..."
+      
+      - echo "Linting..."
+      - pnpm --filter @react-workshop/web lint
+      
+      - echo "Typechecking..."
+      - pnpm --filter @react-workshop/web typecheck
+      
+      - echo "Testing..."
+      - pnpm --filter @react-workshop/web test
+
+      - echo "Building..."
+      - pnpm --filter @react-workshop/web build
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: apps/web/dist
+  discard-paths: no
