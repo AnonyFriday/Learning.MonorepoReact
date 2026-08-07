@@ -31,7 +31,9 @@ export function SectionProductTabs() {
             type="button"
             onClick={() => setActiveTab("additionalInfo")}
             className={`cursor-pointer transition-colors ${
-              activeTab === "additionalInfo" ? "font-medium text-black" : "text-muted hover:text-black"
+              activeTab === "additionalInfo"
+                ? "font-medium text-black"
+                : "text-muted hover:text-black"
             }`}
           >
             Additional Information
