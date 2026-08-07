@@ -130,9 +130,9 @@ pnpm dev
 ### Functional
 
 - [✅] Home page
-- Product detail page
+- [✅] Product detail page
 - [✅] Shop page
-- Cart page
+- [✅] Cart page
 - [✅] Contact page
 - [✅] About page
 - Checkout page
