@@ -43,3 +43,4 @@ catalog:
   "@hookform/resolvers": ^5.7.1
   "zod": ^4.4.3
   "zustand": ^5.0.14
+  '@vitest/coverage-v8': ^4.1.10

@@ -1,0 +1,32 @@
+name: CI Code Quality
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+env:
+  NODE_VERION: "24"
+  PNPM_VERSION: "11.18.0"
+
+jobs:
+  lint_typecheck_build_test:
+    name: Code Quality
+    strategy:
+      fail-fast: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "actions/checkout@v7"
+      - uses: "pnpm/setup@v2"
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: "actions/setup-node@v7"
+        with:
+          node-version: ${{ env.NODE_VERION }}
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm build
+      - run: pnpm test
