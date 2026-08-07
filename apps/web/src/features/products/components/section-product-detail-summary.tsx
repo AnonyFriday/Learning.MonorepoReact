@@ -5,6 +5,7 @@ import { Text } from "@react-workshop/ui/text";
 import { Button } from "@react-workshop/ui/button";
 import { Image } from "@react-workshop/ui/image";
 import { useToastStore } from "@/stores/use-toast-store";
+import { useCartStore } from "@/stores/use-cart-store";
 import { LoadingSpinner } from "@/components/spinner/loading-spinner";
 import { useProductDetails } from "../hooks/use-product-details";
 
@@ -18,6 +19,10 @@ export function SectionProductDetailSummary() {
   const [quantity, setQuantity] = useState(1);
 
   const toast = useToastStore();
+  const addItem = useCartStore((state) => state.addItem);
+
+  // DEBUGGING purpose
+  useCartStore.subscribe((state) => console.log("Cart state changed: ", state));
 
   useEffect(() => {
     if (product) {
@@ -42,6 +47,15 @@ export function SectionProductDetailSummary() {
   }
 
   const handleAddToCart = () => {
+    addItem({
+      id: String(product.id),
+      name: product.name,
+      price: product.price,
+      image: selectedImage || product.images?.[0] || "",
+      selectedSize,
+      selectedColor,
+      quantity
+    });
     toast.success(
       "Added to Cart!",
       `${product.name} (${selectedSize}, ${selectedColor}, qty: ${quantity}) added.`

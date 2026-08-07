@@ -5,8 +5,13 @@ import { AppCts } from "@/appcts";
 import { useQuery } from "@tanstack/react-query";
 import { getProductsDisplay, ProductDisplayResponse } from "../api/get-products-display";
 import { LoadingSpinner } from "@/components/spinner/loading-spinner";
+import { useCartStore } from "@/stores/use-cart-store";
+import { useToastStore } from "@/stores/use-toast-store";
 
 export function SectionRelatedProducts() {
+  const addItem = useCartStore((state) => state.addItem);
+  const toast = useToastStore();
+
   const { data, isLoading } = useQuery<ProductDisplayResponse>({
     queryKey: ["products"],
     queryFn: getProductsDisplay
@@ -25,7 +30,7 @@ export function SectionRelatedProducts() {
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {data?.items.map((p) => (
-            <CardProduct key={p.id}>
+            <CardProduct key={p.id} productId={p.id}>
               {p.badge ? (
                 <CardProduct.Badge className={p.badge}>{p.badge}</CardProduct.Badge>
               ) : null}
@@ -36,7 +41,18 @@ export function SectionRelatedProducts() {
                 price={p.price}
                 originalPrice={p.originalPrice}
               />
-              <CardProduct.AddToCart href={`/shop/${p.id}`} />
+              <CardProduct.AddToCart
+                onAddToCart={() => {
+                  addItem({
+                    id: String(p.id),
+                    name: p.name,
+                    price: p.price,
+                    image: p.imageUrl,
+                    quantity: 1
+                  });
+                  toast.success("Added to Cart!", `${p.name} added to cart.`);
+                }}
+              />
             </CardProduct>
           ))}
         </div>
