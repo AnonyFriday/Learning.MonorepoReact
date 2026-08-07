@@ -1,6 +1,9 @@
 import { LoadingSpinner } from "@/components/spinner/loading-spinner";
 import { CardProduct } from "@/components/products/card-product/card-product";
-import { getProductsDisplay, ProductResponse } from "@/features/home/api/get-products-display";
+import {
+  getProductsDisplay,
+  ProductDisplayResponse
+} from "@/features/products/api/get-products-display";
 import { Heading } from "@react-workshop/ui/heading";
 import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router";
@@ -11,7 +14,7 @@ export interface SectionOurProductsProps {
 }
 
 export function SectionOurProducts({ shopNavLabel, shopNavLinkUrl }: SectionOurProductsProps) {
-  const { data, isLoading, error } = useQuery<ProductResponse>({
+  const { data, isLoading, error } = useQuery<ProductDisplayResponse>({
     queryKey: ["products"],
     queryFn: getProductsDisplay
   });

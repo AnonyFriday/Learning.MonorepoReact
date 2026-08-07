@@ -1,7 +1,15 @@
+import { SectionProductBreadcrumb } from "@/features/products/components/section-product-breadcrumb";
+import { SectionProductDetailSummary } from "@/features/products/components/section-product-detail-summary";
+import { SectionProductTabs } from "@/features/products/components/section-product-tabs";
+import { SectionRelatedProducts } from "@/features/products/components/section-related-products";
+
 export function SingleProductPage() {
   return (
-    <div className="mx-auto w-[min(1240px,calc(100%-32px))] py-12">
-      <h1 className="text-3xl font-bold">Single Product Page</h1>
-    </div>
+    <>
+      <SectionProductBreadcrumb />
+      <SectionProductDetailSummary />
+      <SectionProductTabs />
+      <SectionRelatedProducts />
+    </>
   );
 }
