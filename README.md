@@ -8,13 +8,13 @@ React 19 + Vite monorepo starter with pnpm, Turborepo, Storybook, TanStack Query
 
 ## Deployed on AWS Cloude
 
+- Deployed URL:
+  - http://react-workshop-bucket-456015014344-ap-southeast-1-an.s3-website-ap-southeast-1.amazonaws.com/
+
 - Services:
   - S3 bucket for hosting static files
   - AWS CodePipeline
   - AWS CodeBuild
-
-- Deployed URL:
-  - http://react-workshop-bucket-456015014344-ap-southeast-1-an.s3-website-ap-southeast-1.amazonaws.com/
 
 ![AWS Deploy Pipeline](./.images/deploy-pipeline.png)
 
