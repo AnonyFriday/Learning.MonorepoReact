@@ -6,7 +6,7 @@ import { useToastStore } from "@/stores/use-toast-store";
 import {
   sectionContactFormSchema,
   SectionContactFormValues
-} from "../schemas/section-contact-form-schema";
+} from "@/features/contact/schemas/section-contact-form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export function ContactForm() {
