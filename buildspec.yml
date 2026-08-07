@@ -3,31 +3,35 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: '24'
+      nodejs: 24
     commands:
       - echo "Installing pnpm..."
       - npm install -g pnpm@11.18.0
-  
+
   pre_build:
     commands:
       - echo "Installing dependencies..."
       - pnpm install --frozen-lockfile
-  
+
   build:
     commands:
       - echo "Building project..."
-      
+
       - echo "Linting..."
       - pnpm --filter @react-workshop/web lint
-      
+
       - echo "Typechecking..."
       - pnpm --filter @react-workshop/web typecheck
-      
+
       - echo "Testing..."
       - pnpm --filter @react-workshop/web test
 
-      - echo "Building..."
-      - pnpm --filter @react-workshop/web build
+      - echo "Injecting environment variables..."
+      - echo "VITE_BASE_URL=${VITE_BASE_URL}" > apps/web/.env
+      - echo "VITE_APP_TITLE=Furniro" >> apps/web/.env
+
+      - echo "Building monorepo..."
+      - pnpm build
 
 artifacts:
   files:
