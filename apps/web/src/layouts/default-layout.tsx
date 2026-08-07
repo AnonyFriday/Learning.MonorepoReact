@@ -50,11 +50,11 @@ export function DefaultLayout() {
             <Header.ActionButton aria-label="Wishlist">
               <IHeart size={24} />
             </Header.ActionButton>
-            <NavLink to={AppCts.Routes.Cart}>
+            <Link to={AppCts.Routes.Cart}>
               <Header.ActionButton aria-label="Cart">
                 <IShoppingCart size={24} />
               </Header.ActionButton>
-            </NavLink>
+            </Link>
           </Header.Actions>
         </Header.Nav>
       </Header>
