@@ -7,6 +7,8 @@ import {
 import { Heading } from "@react-workshop/ui/heading";
 import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router";
+import { useCartStore } from "@/stores/use-cart-store";
+import { useToastStore } from "@/stores/use-toast-store";
 
 export interface SectionOurProductsProps {
   shopNavLinkUrl: string;
@@ -14,6 +16,9 @@ export interface SectionOurProductsProps {
 }
 
 export function SectionOurProducts({ shopNavLabel, shopNavLinkUrl }: SectionOurProductsProps) {
+  const addItem = useCartStore((state) => state.addItem);
+  const toast = useToastStore();
+
   const { data, isLoading, error } = useQuery<ProductDisplayResponse>({
     queryKey: ["products"],
     queryFn: getProductsDisplay
@@ -36,7 +41,7 @@ export function SectionOurProducts({ shopNavLabel, shopNavLinkUrl }: SectionOurP
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {data?.items.map((product) => (
-            <CardProduct key={product.id}>
+            <CardProduct key={product.id} productId={product.id}>
               <CardProduct.Image src={product.imageUrl} alt={product.name} />
               {product.badge && <CardProduct.Badge>{product.badge}</CardProduct.Badge>}
               <CardProduct.Info
@@ -45,7 +50,18 @@ export function SectionOurProducts({ shopNavLabel, shopNavLinkUrl }: SectionOurP
                 price={product.price}
                 originalPrice={product.originalPrice}
               />
-              <CardProduct.AddToCart href={`/shop/${product.id}`} />
+              <CardProduct.AddToCart
+                onAddToCart={() => {
+                  addItem({
+                    id: String(product.id),
+                    name: product.name,
+                    price: product.price,
+                    image: product.imageUrl,
+                    quantity: 1
+                  });
+                  toast.success("Added to Cart!", `${product.name} added to cart.`);
+                }}
+              />
             </CardProduct>
           ))}
         </div>

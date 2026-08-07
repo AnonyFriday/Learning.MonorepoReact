@@ -9,6 +9,8 @@ import { ShopFilterBar } from "@/features/products/components/shop-filter-bar";
 import { AppCts } from "@/appcts";
 import { ProductFullResponse, getProductsFull } from "@/features/products/api/get-products-full";
 import { useState } from "react";
+import { useCartStore } from "@/stores/use-cart-store";
+import { useToastStore } from "@/stores/use-toast-store";
 
 const sectionPageHeroProps: SectionPageHeroProps = {
   currentPageTitle: "Shop",
@@ -19,6 +21,9 @@ const sectionPageHeroProps: SectionPageHeroProps = {
 };
 
 export function ShopPage() {
+  const addItem = useCartStore((state) => state.addItem);
+  const toast = useToastStore();
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { data, isLoading, error } = useQuery<ProductFullResponse>({
     queryKey: ["products", currentPage],
@@ -43,7 +48,7 @@ export function ShopPage() {
             <>
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {data?.items.map((product) => (
-                  <CardProduct key={product.id}>
+                  <CardProduct key={product.id} productId={product.id}>
                     <CardProduct.Image src={product.imageUrl} alt={product.name} />
                     {product.badge && <CardProduct.Badge>{product.badge}</CardProduct.Badge>}
                     <CardProduct.Info
@@ -52,7 +57,18 @@ export function ShopPage() {
                       price={product.price}
                       originalPrice={product.originalPrice}
                     />
-                    <CardProduct.AddToCart href={`/shop/${product.id}`} />
+                    <CardProduct.AddToCart
+                      onAddToCart={() => {
+                        addItem({
+                          id: String(product.id),
+                          name: product.name,
+                          price: product.price,
+                          image: product.imageUrl,
+                          quantity: 1
+                        });
+                        toast.success("Added to Cart!", `${product.name} added to cart.`);
+                      }}
+                    />
                   </CardProduct>
                 ))}
               </div>

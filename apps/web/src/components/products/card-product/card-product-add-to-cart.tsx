@@ -8,13 +8,15 @@ export type CardProductAddToCartProps = HTMLAttributes<HTMLDivElement> & {
   to?: string;
   asComponent?: ElementType;
   buttonLabel?: string;
+  onAddToCart?: () => void;
 };
 
 export function CardProductAddToCart({
   className,
   href,
-  asComponent: Component = "a",
+  asComponent: Component = "div",
   buttonLabel = "Add to cart",
+  onAddToCart,
   ...props
 }: CardProductAddToCartProps) {
   return (
@@ -26,32 +28,61 @@ export function CardProductAddToCart({
       {...props}
     >
       <div className="grid justify-items-center gap-6">
-        <Component href={href}>
+        {onAddToCart ? (
           <UIButton
             variant="secondary"
-            className="border-none bg-white px-14 py-3 font-semibold text-brand hover:bg-white"
+            className="border-none bg-white px-14 py-3 font-semibold text-brand hover:bg-white cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onAddToCart();
+            }}
           >
             {buttonLabel}
           </UIButton>
-        </Component>
+        ) : (
+          <Component {...(href ? { href } : {})}>
+            <UIButton
+              variant="secondary"
+              className="border-none bg-white px-14 py-3 font-semibold text-brand hover:bg-white"
+            >
+              {buttonLabel}
+            </UIButton>
+          </Component>
+        )}
         <div className="flex gap-5 text-white">
-          <Component href="#share">
-            <Text asComponent="span" className="cursor-pointer text-white hover:text-brand">
-              Share
-            </Text>
-          </Component>
+          <Text
+            asComponent="span"
+            className="cursor-pointer text-white hover:text-brand"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            Share
+          </Text>
 
-          <Component href="#compare">
-            <Text asComponent="span" className="cursor-pointer text-white hover:text-brand">
-              Compare
-            </Text>
-          </Component>
+          <Text
+            asComponent="span"
+            className="cursor-pointer text-white hover:text-brand"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            Compare
+          </Text>
 
-          <Component href="#like">
-            <Text asComponent="span" className="cursor-pointer text-white hover:text-brand">
-              Like
-            </Text>
-          </Component>
+          <Text
+            asComponent="span"
+            className="cursor-pointer text-white hover:text-brand"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            Like
+          </Text>
         </div>
       </div>
     </div>
