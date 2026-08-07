@@ -6,7 +6,7 @@ React 19 + Vite monorepo starter with pnpm, Turborepo, Storybook, TanStack Query
 
 <https://www.figma.com/design/QFZc37IcA93Y60Zi1kbYsz/eCommerce-Website-%7C-Web-Page-Design-%7C-UI-KIT-%7C-Interior-Landing-Page--Community-?node-id=0-1&p=f&t=qazEdbbLf2KnueQT-0>
 
-## Deployed on AWS Cloude
+## Deployed on AWS Cloud
 
 - Deployed URL:
   - https://d21r7zpgnuyfp4.cloudfront.net/
