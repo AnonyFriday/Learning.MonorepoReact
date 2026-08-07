@@ -21,10 +21,10 @@ export function SectionPageHero({
       <div className="absolute inset-0 bg-white/55 backdrop-blur-[1px]"></div>
       <div className="relative text-center">
         {logoUrl && <img className="mx-auto mb-1 h-12 w-12 object-contain" src={logoUrl} alt="" />}
-        <h1 className="text-5xl font-medium">{fromPageTitle}</h1>
+        <h1 className="text-5xl font-medium">{currentPageTitle}</h1>
         <p className="mt-3 font-medium">
           <Link to={fromPageUrl} className="hover:text-brand">
-            Home
+            {fromPageTitle}
           </Link>{" "}
           <span className="mx-1">&gt;</span>
           <span className="font-light">{currentPageTitle}</span>

@@ -2,11 +2,6 @@
 
 React 19 + Vite monorepo starter with pnpm, Turborepo, Storybook, TanStack Query, React Hook Form, Tailwind CSS, and shared packages.
 
-## Requirements
-
-- Node.js 20.19+ or 22.12+
-- pnpm 10+
-
 ## Getting Started
 
 ```bash
@@ -34,98 +29,7 @@ pnpm dev
 
 <https://www.figma.com/design/QFZc37IcA93Y60Zi1kbYsz/eCommerce-Website-%7C-Web-Page-Design-%7C-UI-KIT-%7C-Interior-Landing-Page--Community-?node-id=0-1&p=f&t=qazEdbbLf2KnueQT-0>
 
-## Api Mock
-
-<https://dummyjson.com/custom-response>
-
-## Api Example
-
-```json
-{
-  "products": {
-    "method": "GET",
-    "file": "products.json",
-    "url": "https://dummyjson.com/c/537f-68c7-475c-8058",
-    "expiresOn": null
-  },
-
-  "products_16items": {
-    "method": "GET",
-    "file": "products.json",
-    "url": "https://dummyjson.com/c/38dc-0aed-4127-9190",
-    "expiresOn": null
-  },
-
-  "productDetails": {
-    "method": "GET",
-    "file": "product-details.json",
-    "url": "https://dummyjson.com/c/feb3-066a-4263-88a8",
-    "expiresOn": null
-  },
-  "categories": {
-    "method": "GET",
-    "file": "categories.json",
-    "url": "https://dummyjson.com/c/796e-8dd2-4c34-8a9c",
-    "expiresOn": null
-  },
-  "compare": {
-    "method": "GET",
-    "file": "compare.json",
-    "url": "https://dummyjson.com/c/ac50-924b-4fce-9002",
-    "expiresOn": null
-  },
-  "posts": {
-    "method": "GET",
-    "file": "posts.json",
-    "url": "https://dummyjson.com/c/5f3e-0afd-424a-a144",
-    "expiresOn": null
-  },
-  "postDetails": {
-    "method": "GET",
-    "file": "post-details.json",
-    "url": "https://dummyjson.com/c/0641-2273-4e42-8738",
-    "expiresOn": null
-  },
-  "cart": {
-    "method": "GET",
-    "file": "cart.json",
-    "url": "https://dummyjson.com/c/4758-8939-498e-a12c",
-    "expiresOn": null
-  },
-  "cartAdd": {
-    "method": "POST",
-    "file": "cart-add.json",
-    "url": "https://dummyjson.com/c/0bd3-1de3-4e85-92fb",
-    "expiresOn": null
-  },
-  "cartUpdate": {
-    "method": "PATCH",
-    "file": "cart-update.json",
-    "url": "https://dummyjson.com/c/05e7-d03f-434a-960f",
-    "expiresOn": null
-  },
-  "cartRemove": {
-    "method": "DELETE",
-    "file": "cart-remove.json",
-    "url": "https://dummyjson.com/c/dc1d-e752-4dc6-b4f7",
-    "expiresOn": null
-  },
-  "checkout": {
-    "method": "POST",
-    "file": "checkout.json",
-    "url": "https://dummyjson.com/c/2bf1-c646-4b04-b713",
-    "expiresOn": null
-  },
-  "contact": {
-    "method": "POST",
-    "file": "contact.json",
-    "url": "https://dummyjson.com/c/d46d-a885-4d10-afc3",
-    "expiresOn": null
-  }
-}
-```
-
-## Passing Criteria
+## Achieved criteria
 
 ### Functional
 
@@ -135,28 +39,12 @@ pnpm dev
 - [✅] Cart page
 - [✅] Contact page
 - [✅] About page
-- Checkout page
+- [✅] Checkout page
 
 ### UI
 
-- At least **70%** visual similarity with the Figma design
-- Responsive on desktop and mobile
-
 ### Code Quality
-
-The following commands must pass:
-
-```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm build
-```
 
 ### Testing
 
-- Minimum **70%** unit test coverage
-
 ### Deploy
-
-- Deploy to Vercel or another hosting platform if needed. (option)
