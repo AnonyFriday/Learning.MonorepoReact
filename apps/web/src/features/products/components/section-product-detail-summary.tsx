@@ -5,10 +5,11 @@ import { Text } from "@react-workshop/ui/text";
 import { Button } from "@react-workshop/ui/button";
 import { Image } from "@react-workshop/ui/image";
 import { useToastStore } from "@/stores/use-toast-store";
+import { LoadingSpinner } from "@/components/spinner/loading-spinner";
 import { useProductDetails } from "../hooks/use-product-details";
 
 export function SectionProductDetailSummary() {
-  const { id = "1" } = useParams<{ id: string }>();
+  const { id = "1" } = useParams<{ id: string }>(); // fake id, for testing purpose
   const { data: product, isLoading, isError } = useProductDetails(id);
 
   const [selectedImage, setSelectedImage] = useState<string>("");
@@ -27,11 +28,7 @@ export function SectionProductDetailSummary() {
   }, [product]);
 
   if (isLoading) {
-    return (
-      <section className="py-24 text-center">
-        <Text variant="muted">Loading product details...</Text>
-      </section>
-    );
+    return <LoadingSpinner label="Loading product details..." />;
   }
 
   if (isError || !product) {
@@ -73,11 +70,11 @@ export function SectionProductDetailSummary() {
               </button>
             ))}
           </div>
-          <div className="grid min-h-[500px] place-items-center rounded-[10px] bg-beige p-8">
+          <div className="grid min-h-125 place-items-center rounded-[10px] bg-beige p-8">
             <Image
               src={selectedImage || product.images?.[0] || ""}
               alt={product.name}
-              className="max-h-[430px] w-full object-contain"
+              className="max-h-107.5 w-full object-contain"
             />
           </div>
         </div>

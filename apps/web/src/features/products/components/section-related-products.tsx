@@ -2,47 +2,20 @@ import { NavLink } from "react-router";
 import { Heading } from "@react-workshop/ui/heading";
 import { CardProduct } from "@/components/products/card-product/card-product";
 import { AppCts } from "@/appcts";
-
-const relatedProducts = [
-  {
-    id: "1",
-    name: "Syltherine",
-    category: "Stylish cafe chair",
-    price: "Rp 2.500.000",
-    originalPrice: "Rp 3.500.000",
-    badgeText: "-30%",
-    badgeClass: "bg-danger",
-    imageUrl: "/images/product/product-01.png"
-  },
-  {
-    id: "2",
-    name: "Leviosa",
-    category: "Stylish cafe chair",
-    price: "Rp 2.500.000",
-    imageUrl: "/images/product/product-02.png"
-  },
-  {
-    id: "3",
-    name: "Lolito",
-    category: "Luxury big sofa",
-    price: "Rp 7.000.000",
-    originalPrice: "Rp 14.000.000",
-    badgeText: "-50%",
-    badgeClass: "bg-danger",
-    imageUrl: "/images/product/product-03.jpg"
-  },
-  {
-    id: "4",
-    name: "Respira",
-    category: "Outdoor bar table and stool",
-    price: "Rp 500.000",
-    badgeText: "New",
-    badgeClass: "bg-fresh",
-    imageUrl: "/images/product/product-04.png"
-  }
-];
+import { useQuery } from "@tanstack/react-query";
+import { getProductsDisplay, ProductDisplayResponse } from "../api/get-products-display";
+import { LoadingSpinner } from "@/components/spinner/loading-spinner";
 
 export function SectionRelatedProducts() {
+  const { data, isLoading } = useQuery<ProductDisplayResponse>({
+    queryKey: ["products"],
+    queryFn: getProductsDisplay
+  });
+
+  if (isLoading) {
+    return <LoadingSpinner label="Loading related products..." />;
+  }
+
   return (
     <section className="py-14">
       <div className="mx-auto w-[min(1236px,calc(100%-32px))]">
@@ -51,10 +24,10 @@ export function SectionRelatedProducts() {
         </Heading>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {relatedProducts.map((p) => (
+          {data?.items.map((p) => (
             <CardProduct key={p.id}>
-              {p.badgeText ? (
-                <CardProduct.Badge className={p.badgeClass}>{p.badgeText}</CardProduct.Badge>
+              {p.badge ? (
+                <CardProduct.Badge className={p.badge}>{p.badge}</CardProduct.Badge>
               ) : null}
               <CardProduct.Image src={p.imageUrl} alt={p.name} />
               <CardProduct.Info
