@@ -36,7 +36,7 @@ export function ShopPage() {
     <>
       <SectionPageHero {...sectionPageHeroProps} />
 
-      <ShopFilterBar currentPage={currentPage} totalResults={totalCount} />
+      <ShopFilterBar currentPage={currentPage} />
 
       <section className="py-16">
         <div className="mx-auto w-[min(1236px,calc(100%-32px))]">

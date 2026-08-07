@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import { Header } from "@react-workshop/ui/header";
 import { Footer } from "@react-workshop/ui/footer";
 import { Input } from "@react-workshop/ui/input";
@@ -50,9 +50,11 @@ export function DefaultLayout() {
             <Header.ActionButton aria-label="Wishlist">
               <IHeart size={24} />
             </Header.ActionButton>
-            <Header.ActionButton aria-label="Cart">
-              <IShoppingCart size={24} />
-            </Header.ActionButton>
+            <NavLink to={AppCts.Routes.Cart}>
+              <Header.ActionButton aria-label="Cart">
+                <IShoppingCart size={24} />
+              </Header.ActionButton>
+            </NavLink>
           </Header.Actions>
         </Header.Nav>
       </Header>
