@@ -42,12 +42,14 @@ export function ShopPage() {
         <div className="mx-auto w-[min(1236px,calc(100%-32px))]">
           {isLoading ? (
             <LoadingSpinner />
-          ) : error ? (
-            <Text className="text-center py-12 text-lg text-red-500">Failed to load products.</Text>
+          ) : error || (data?.items ?? []).length === 0 ? (
+            <Text variant="muted" className="text-center py-12 text-lg">
+              No product founded
+            </Text>
           ) : (
             <>
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                {data?.items.map((product) => (
+                {(data?.items ?? []).map((product) => (
                   <CardProduct key={product.id} productId={product.id}>
                     <CardProduct.Image src={product.imageUrl} alt={product.name} />
                     {product.badge && <CardProduct.Badge>{product.badge}</CardProduct.Badge>}
